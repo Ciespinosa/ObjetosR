@@ -1,9 +1,10 @@
 ---
-title: "Introducción a R:"
-subtitle: "Los primeros pasos"
+title: "Los objetos en R:"
 author: "Carlos Iván Espinosa"
-date: "10 de octubre 2019"
+date: "25 de noviembre 2020"
 output:
+  pdf_document:
+    toc: yes
   html_document:
     fig_caption: yes
     highlight: haddock
@@ -12,14 +13,12 @@ output:
     toc: yes
     toc_float:
       smooth_scroll: no
-  pdf_document:
-    toc: yes
 ---
 <p> <br> </p>
 
 <p> <br> </p>
 
-<button name="button" onclick="https://ciespinosa.github.io/IntroduccionR.html">Regresar
+<button name="button" onclick="https://ciespinosa.github.io/IntroduccionR">Regresar
 Introducción R</button> 
 
 ****
@@ -436,10 +435,12 @@ Los argumentos de la función array son: los datos que queremos se escriban en l
 3. Genere una estructura de índices del Script. Esta estructura debería referenciar desde la pregunta 4 hasta el final de las preguntas de este ejercicio.
 
 4. Genere los siguientes vectores:
- - Un vector con datos de edad de los estudiantes del aula.
- - Un vector con la altura de los estudiantes del aula.
- - Un vector con el género de los estudiantes del aula.
- - Un vector para conocer aquellos estudiantes mayores de 25
+ - Un vector con datos de edad de 20 estudiantes puede usar rnorm para generar un vector de pesos con una media de 70kg. Incluya en el mismo vector 20 datos más con una media de 56Kg. Usted defina la desviación. 
+ - Repita el mismo ejercicio pero esta vez de altura. Para los primeros 20 estudiantes la altura debe tener una media de 167 cm y el segundo grupo con una media de 150 cm
+ - Un vector con el género de los estudiantes. Escoja aleatoreamente 40 datos de Masculino, Femenino. Use la función sample. 
+ 
+ - Genere un vector de edades en años de los estudiantes, use rnorm para generar un vector con una media de 25, use la función round para redondear a cero decimales.
+ - Un vector lógico que contenga que posisión los estudiantes cumplen con ser mayores de 25
 
 Responda:
 
@@ -455,4 +456,5 @@ Responda:
 8. Genere una data frame con los vectores numéricos y caracteres.
 
 9. Convierta el data frame en una matriz  y verifique que tipo de elementos constituyen esta matriz. De que tipo son los datos de esta matriz.
+
 
