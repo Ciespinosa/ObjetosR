@@ -1,10 +1,8 @@
 ---
-title: "Los objetos en R:"
+title: "Los objetos en R"
 author: "Carlos Iván Espinosa"
 date: "25 de noviembre 2020"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     fig_caption: yes
     highlight: haddock
@@ -13,6 +11,8 @@ output:
     toc: yes
     toc_float:
       smooth_scroll: no
+  pdf_document:
+    toc: yes
 ---
 <p> <br> </p>
 
@@ -63,7 +63,7 @@ Notas
 ```
 Ahora si podemos ver que tenemos un curso muy aplicado.
 
-# Operación de los objetos
+## Operación de los objetos
 
 A continuación, vamos a realizar un pequeño programa que nos ayude a entender como los objetos pueden ser operados a través de comandos. Haremos un seguimiento de los costos de un producto.  Mi hija María Sol tiene un pequeño negocio de chocolates, vamos a utilizar lo que ella hace para ver lo potente que es R.
 
@@ -128,7 +128,7 @@ negocio(C=7,N=2.5,D=2,E=0.10, G=0.3)
 ```
 
 
-Como ven R es muy potente y podemos hacer muchas cosas con el, cada uno de los objetos pueden ser operados, en este caso a los objetos los hemos multiplicado, dividido o sumado. Verán más adelante que las operaciones pueden ser mucho más complejas.
+Como ven R es muy potente y podemos hacer muchas cosas con él, cada uno de los objetos pueden ser operados, en este caso a los objetos los hemos multiplicado, dividido o sumado. Verán más adelante que las operaciones pueden ser mucho más complejas.
 
 ****
 
@@ -321,7 +321,7 @@ cat3
 
 ```
 
-Muy bien lo que hemos hecho es transformar los niveles iniciales a dos nuevos niveles. Muchas veces cuando trabajamos con datos nos interesa hacer lo contrario, los datos numéricos transformarlos a categorias.  Esto lo podemos hacer con la función _cut()_.
+Muy bien lo que hemos hecho es transformar los niveles iniciales a dos nuevos niveles. Muchas veces cuando trabajamos con datos nos interesa hacer lo contrario, los datos numéricos transformarlos a categorías.  Esto lo podemos hacer con la función _cut()_.
 
 ```{r}
 x <- 1:100 # Porcentaje de contaminación
@@ -330,7 +330,7 @@ xcat <- cut(x, breaks = c(0, 30, 70, 100))
 xcat1 <- cut(x, breaks = c(0, 30, 70, 100), labels=c("bajo", "medio", "alto"))
 
 ```
-Lo que hemos hecho es generar tres niveles; el primero entre 0 y 30, el segundo entre 30 y 70 y el tercero entre 70 y 100. En xcat1 hemos asignado unos nombres a cada una de las nuebas categorias con el argumento _labels_. 
+Lo que hemos hecho es generar tres niveles; el primero entre 0 y 30, el segundo entre 30 y 70 y el tercero entre 70 y 100. En xcat1 hemos asignado unos nombres a cada una de las nuevas categorías con el argumento _labels_. 
 
 ### Listas
 
@@ -424,6 +424,96 @@ y
 
 ```
 Los argumentos de la función array son: los datos que queremos se escriban en la matriz (1:9), utilizando la función concatenar (c), ponemos el número de filas, el número de columnas y el número de matrices a generar.
+
+# Atributos
+
+Los atributos de un objeto se relacionan con las características que este objeto tiene, al inicio de esta lección comentamos que los objetos se definían en base al tipo de elementos y a las dimensiones que el objeto tiene, estos son los dos primeros atributos que un objeto tiene, el tercer atributo lo constituye el nombres de los objetos.
+
+## Tipo de elementos
+
+En R tenemos al menos tres funciones (`class`, `typeof`, `mode`) que nos permite evaluar el tipo de elementos que un objeto tiene. No voy a profundizar en el uso de estas funciones que son ligeramente distintas.
+
+```{r}
+Vnu <- c(2L,4L,5L,6L,7L)
+Vnd <- rnorm(5,14,6)
+Mnu <- matrix(1:9, 3,3)
+DaCN <- data.frame(num=1:4, car=c("a","b","d", "h"))
+
+class(Vnu); typeof(Vnu); mode(Vnu)
+```
+Como vemos este objeto es un vector numérico y es un entero. La función `mode` nos da el tipo más general del vector mientras que la función `class` y `typeof` nos dan el tipo más específico.
+
+```{r}
+class(Vnd); typeof(Vnd); mode(Vnd)
+
+```
+Como vemos este objeto es un vector numérico, doble. La función `mode` nos da el tipo más general del vector mientras que la función `typeof` nos da el tipo más específico. En este caso la función `class` nos da también el tipo más general.
+
+
+```{r}
+class(Mnu); typeof(Mnu); mode(Mnu)
+```
+En este caso la función `class`nos dice el tipo de estructura que tiene el objeto, la función `typeof`nos dice el tipo más específico y la función `mode` nos dice el tipo más general. 
+
+```{r}
+class(DaCN); typeof(DaCN); mode(DaCN)
+```
+
+En este caso la función `class`nos dice el tipo de estructura que tiene el objeto. Con los objetos data.frame no podemos saber el tipo de objeto puesto que este tipo de objetos tiene elementos heterogéneos. Así que necesitamos evaluar cada vector.
+
+```{r}
+typeof(DaCN$num); typeof(DaCN$car)
+```
+
+## Dimensiones
+
+Tenemos algunas funciones que nos permiten conocer las dimensiones de los objetos. Para los vectores usamos la función `length`, mientras que para los objetos con dos o más dimensiones podemos usar la función `dim`, esta función nos brinda información del número de filas y de columnas. Para conocer el número de filas o el número de columnas podemos usar las funciones `nrow` y `ncol`, respectivamente. 
+
+```{r}
+length(Vnu); dim(DaCN); nrow(DaCN); ncol(DaCN)
+```
+
+## Nombres
+
+Los nombres son otro atributo importante de los objetos, estos nos pueden servir para manipular los datos de forma más eficiente. La función `names` devuelve los nombres de vectores y de las columnas de los marcos de datos (data.frames). La función `dimnames` devuelve los nombres de las filas y columnas de las matrices.
+
+
+```{r}
+names(Vnd)
+```
+Como vemos este vector no tiene nombres, podemos usar la misma función `names` para asignar un nombre a cada elemento.
+
+```{r}
+names(Vnd) <- c("Pedro", "María", "Antonio", "Diana", "Juan")
+names(Vnd)
+Vnd
+```
+
+La función `names` me devuelve los nombres de los elementos, cuando imprimimos nuestro vector se muestran los datos y los nombres.
+
+```{r}
+names(DaCN)
+```
+Si utilizo la función `names` con un data.frame me devuelve los nombres de las columnas. Al igual que en el caso de los vectores puedo usar esta misma función para cambiar los nombres.
+
+```{r}
+dimnames(DaCN)
+```
+La función `dimnames` me devuelve una lista con los nombres de las filas y de las columnas. Al igual que en el caso anterior puedo usar la misma función para cambiar los nombres, pero en este caso debo dar una lista con un vector de los nombres de las filas y otro con el de las columnas.
+
+```{r}
+dimnames(DaCN) <- list(c("a", "b","c", "d"), names(DaCN))
+dimnames(DaCN)
+```
+En este caso hemos cambiado los nombres de las filas y hemos mantenido el nombre de las columnas. Es importante que en la lista que asignamos a los dimnames tengamos dos elementos; los nombres de filas y columnas.
+
+La función dimnames puede ser usada en las matrices de igual forma que lo hacemos con los data.frames, sin embargo, la función `names` no funciona con las matrices.
+
+Finalmente, podemos acceder a los nombres de filas y columnas directamente con las funciones `rownames` y `colnames`.
+
+```{r}
+rownames(DaCN); colnames(DaCN)
+```
 
 
 # Ejercicios
