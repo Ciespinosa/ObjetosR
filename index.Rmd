@@ -1,6 +1,10 @@
 ---
 title: "Los objetos en R"
-author: "Carlos Iván Espinosa"
+author:
+- name: "Carlos Iván Espinosa"
+  affiliation:
+    - Laboratorio de ecología y servicios ecosistémicos, Universidad Técnica Particular de Loja.
+  email: ciespinosa@utpl.edu.ec
 date: "25 de noviembre 2020"
 output:
   html_document:
@@ -14,12 +18,8 @@ output:
   pdf_document:
     toc: yes
 ---
-<p> <br> </p>
 
-<p> <br> </p>
-
-<button name="button" onclick="https://ciespinosa.github.io/IntroduccionR">Regresar
-Introducción R</button> 
+Para regresar a Introducción R [![button](push1.png) ](https://ciespinosa.github.io/IntroduccionR)
 
 ****
 Puedes descargar esta lección en pdf [aquí](https://ciespinosa.github.io/ObjetosR/index.pdf)
