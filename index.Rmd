@@ -1,11 +1,11 @@
 ---
 title: "Los objetos en R"
 author:
-- name: "Carlos Iván Espinosa"
+  name: "Carlos Iván Espinosa"
   affiliation:
     - Laboratorio de ecología y servicios ecosistémicos, Universidad Técnica Particular de Loja.
   email: ciespinosa@utpl.edu.ec
-date: "25 de noviembre 2020"
+date: "septiembre 2021"
 output:
   html_document:
     fig_caption: yes
@@ -29,7 +29,7 @@ Puedes descargar esta lección en pdf [aquí](https://ciespinosa.github.io/Objet
 
 # Los objetos
 
-Como lo vimos en el apartado anterior, R opera sobre objetos y estos objetos pueden ser diversos. Los diferentes tipos de objetos poseen unas determinadas características de estructura, en el entorno R el tipo de objeto se conoce como modo (mode) o clase (class). 
+Como vimos en el apartado anterior, R opera sobre objetos y estos objetos pueden ser de diferentes formas y tipos. Los objetos poseen unas determinadas características de estructura y constitución, en R el tipo de objeto se conoce como modo (mode) o clase (class). 
 
 Cuando estoy generado un objeto, es necesario darle una denominación, un nombre, y asignarle a este unos datos. En R la función de asignación es `<-`. 
 
@@ -40,6 +40,7 @@ profe <- "Carlos Iván"
 profe
 
 ```
+
 Hemos creado el objeto _profe_ asignando el nombre Carlos Iván. Si ejecutamos el nombre del objeto R nos devuelve el contenido. Veamos otro objeto.
 
 
@@ -55,19 +56,20 @@ notas
 
 Para R los nombres no son entendidos como palabras sino como una serie de símbolos, por tanto la "N" no es lo mismo que la "n", por lo que es necesario poner exactamente el nombre.  En el caso del ejemplo, Notas no es igual que notas.  Volvamos a intentar.
 
+
 ```{r, echo= FALSE}
 Notas <- c(rep(10,5), rep(7,3), rep(8.5, 12))
 ```
 ```{r}
 Notas
 ```
-Ahora si podemos ver que tenemos un curso muy aplicado.
+Ahora si, podemos ver que tenemos un curso muy aplicado.
 
 ## Operación de los objetos
 
 A continuación, vamos a realizar un pequeño programa que nos ayude a entender como los objetos pueden ser operados a través de comandos. Haremos un seguimiento de los costos de un producto.  Mi hija María Sol tiene un pequeño negocio de chocolates, vamos a utilizar lo que ella hace para ver lo potente que es R.
 
-Para hacer los chocolates ella usa los siguientes ingredientes:
+Para elaborar los chocolates ella usa los siguientes ingredientes:
 
 - Chocolate (Choco)
 - Nuez 
@@ -104,7 +106,8 @@ venta
 
 ```
 
-Como esto puede ser engorroso podríamos desarrollar una función que calcule cada uno de estas mediciones.
+Como esto puede ser engorroso podríamos desarrollar una función que calcule cada una de estas variables.
+
 
 ```{r}
 negocio <- function(C,N,D,E,G){
@@ -128,7 +131,7 @@ negocio(C=7,N=2.5,D=2,E=0.10, G=0.3)
 ```
 
 
-Como ven R es muy potente y podemos hacer muchas cosas con él, cada uno de los objetos pueden ser operados, en este caso a los objetos los hemos multiplicado, dividido o sumado. Verán más adelante que las operaciones pueden ser mucho más complejas.
+Como ven R es muy potente y podemos hacer muchas cosas con él, cada uno de los objetos puede ser operado, en este caso a los objetos los hemos multiplicado, dividido o sumado. Verán más adelante que las operaciones pueden ser mucho más complejas.
 
 ****
 
@@ -147,6 +150,7 @@ c <- "a"
 
 d;e;l;c
 ```
+
 Podemos preguntar a R el tipo de objeto con el que estamos trabajando, para esto utilizamos las funciones _is.double, is.integer, is.logical, is.character_
 
 ```{r}
@@ -157,7 +161,7 @@ is.character(d); is.character(l); is.character(c)
 
 ```
 
-Como vemos cada uno de estos objetos son diferentes. Los objetos dobles (double) están formados por datos continuos, mientras que los enteros (integer) están formados por datos de tipo conteo. Finalmente, los objetos lógicos se dan luego de una operación lógica. Podemos preguntar directamente el tipo de datos que tiene el objeto con la función _typeof_
+Como vemos cada uno de estos objetos es diferente. Los objetos dobles (double) están formados por datos continuos, mientras que los enteros (integer) están formados por datos de tipo conteo. Finalmente, los objetos lógicos se dan luego de una operación lógica. Podemos preguntar directamente el tipo de datos que tiene el objeto con la función _typeof_
 
 ```{r}
 typeof(d); typeof(l); typeof(c)
@@ -198,7 +202,7 @@ a;b;c
 
 ```
 
-Cada uno de estos vectores fue generado utilizando diferentes funciones o códigos.  El vector numérico se generó utilizando únicamente una secuencia de datos entre 5 y 12, lo hicimos utilizando los dos puntos, esto nos sirve cuando queremos una secuencia ininterrumpida entre dos números, sin embargo, si queremos tener secuencias con diferentes distancias.  Para el vector lógico hemos utilizado operadores lógicos como __igual o mayor que (>=)__, __menor o igual que (<=)__ , __y (&)__. Finalmente, para generar un vector de carácter hemos utilizado la función  __concatenación (_c_)__, esta función permite encadenar varios componentes en un vector.
+Cada uno de estos vectores fue generado utilizando diferentes funciones o códigos.  El vector numérico se generó utilizando únicamente una secuencia de datos entre 5 y 12, lo hicimos utilizando los dos puntos, esto nos sirve cuando queremos una secuencia ininterrumpida entre dos números, sin embargo, si queremos tener secuencias con diferentes distancias necesitamos usar la función __seq__.  Para el vector lógico hemos utilizado operadores lógicos como __igual o mayor que (>=)__, __menor o igual que (<=)__ , __y (&)__. Finalmente, para generar un vector de carácter hemos utilizado la función  __concatenación (_c_)__, esta función permite encadenar varios componentes en un vector.
 
 Veamos el tipo de vector que hemos generado.
 
@@ -234,7 +238,8 @@ En el caso de los vectores numéricos y categóricos hemos utilizado secuencia y
 secA<- seq(from=10, to=290, by=20)
 secA
 ```
-Aquí hemos utilizado la secuencia entre 10 y 290, pero le hemos dicho que lo haga cada 20 unidades. R entiende el orden de los datos proporcionados, así que la expresión que acabamos de ejecutar es exactamente igual a: `secA<- seq(10, 290, 20)`
+
+Aquí hemos utilizado la secuencia entre 10 y 290, pero le hemos dicho que lo haga cada 20 unidades. R entiende el orden de los datos proporcionados, así que la expresión que acabamos de ejecutar es exactamente igual a: `secA<- seq(10, 290, 20)`. 
 
 Otra de las funciones que se ocupan mucho para la generación de los vectores es la función `rep`.  Esta función permite repetir varias veces un argumento.
 
@@ -265,14 +270,15 @@ pasA; pasB
 
 La función _paste_ requiere tres argumentos; los dos vectores que serán unidos y un símbolo de separación. 
 
-Como vemos los vectores deben estar compuestos por un solo tipo de elementos, si un vector tiene más de un tipo de elemento estos son  `coaccionados` al tipo más flexible. De esta forma en un vector que tenga números y una letra, estos pueden ser coaccionados (coerced) a caracteres.
+Los vectores deben estar compuestos por un solo tipo de elementos, si un vector tiene más de un tipo de elemento estos son  `coaccionados` al tipo más flexible. De esta forma, en un vector que tenga números y una letra, estos pueden ser coaccionados (coerced) a caracteres.
 
 ```{r}
 a <- c(2,5,7,5,3, 7, "a")
 typeof(a)
 a
 ```
-Como vemos este vector fue convertido en un vector tipo carácter. Los vectores lógicos son coaccionado a 0 y 1, falso y verdadero respectivamente.
+
+Este vector fue convertido en un vector tipo carácter. Los vectores lógicos son coaccionado a 0 y 1, falso y verdadero respectivamente.
 
 ```{r}
 al <- a=="a"
@@ -280,7 +286,8 @@ al
 
 sum(al)
 ```
-Podemos forzar una coerción usando la función  `as.numeric` por ejemplo, para cambiar unos factores a números.  Usaremos  `as.character ` para convertir un vector a caracteres, o  `as.matrix ` para convertir un data frame en una matriz.
+
+Podemos forzar una coerción usando la función `as.numeric` por ejemplo, para cambiar unos factores a números.  Usaremos  `as.character ` para convertir un vector a caracteres, o  `as.matrix ` para convertir un data frame en una matriz.
 
 ### Factores (Factors)
 
@@ -298,9 +305,9 @@ levels(cat)
 
 La función `factor` nos permite convertir el vector de caracteres en un vector factor.  Ejecute la primera línea de código y luego el nombre de este objeto, ahora ejecute la segunda línea y luego el nombre del objeto.  ¿Cuál es la diferencia? 
 
-Efectivamente cuando ejecuta la segunda línea al final aparece una observación: `Levels: alto bajo medio`
+Efectivamente, cuando ejecuta la segunda línea al final aparece una observación: `Levels: alto bajo medio`
 
-Como vemos los niveles (levels) son mostrados en base a un orden alfanúmerico, este orden será el utilizado para los gráficos y los análisis por lo que es importante saber si este orden es el que queremos.  Si no es así podemos utilizar la función `relevel` para decir cuál es el nivel que queremos que salga primero, o en la función factor informar el orden de los niveles.
+Los niveles (levels) son mostrados en base a un orden alfanúmerico, este orden será el utilizado para los gráficos y los análisis por lo que es importante saber si este orden es el que queremos.  Si no es así, podemos utilizar la función `relevel` para decir cuál es el nivel que queremos que salga primero, o en la función factor informar el orden de los niveles.
 
 ```{r}
 
@@ -323,6 +330,7 @@ cat3
 
 Muy bien lo que hemos hecho es transformar los niveles iniciales a dos nuevos niveles. Muchas veces cuando trabajamos con datos nos interesa hacer lo contrario, los datos numéricos transformarlos a categorías.  Esto lo podemos hacer con la función _cut()_.
 
+
 ```{r}
 x <- 1:100 # Porcentaje de contaminación
 
@@ -342,13 +350,15 @@ Las listas al igual que los vectores tienen una sola dimensión, pero a diferenc
 listA <- list("a", "b", c(1))
 listA
 ```
-Como vemos las listas pueden tener una estructura lineal, pero puede estar compuesta por diversos elementos. Incluso la lista puede incluir listas, así se puede generar una estructura de datos jerarquizada.
+
+Las listas pueden tener una estructura lineal, pero puede estar compuesta por diversos elementos. Incluso la lista puede incluir listas, así se puede generar una estructura de datos jerarquizada.
 
 
 ```{r}
 listA <- list(1:5, list(rep(1,3)), list("a", "b", "c", list(rep("a",3))))
 str(listA)
 ```
+
 Para convertir la lista en un vector podemos usar la función `unlist`, lo que vuelve la lista a un vector. Si esta lista contiene elementos de diferente tipo los elementos serán coaccionados.
 
 ```{r}
@@ -399,7 +409,7 @@ mode(conta)
 
 ```
 
-Como vemos, esta función de pegado `cbind`, si bien junta los datos, convierte los datos categóricos en numéricos, y genera una matriz con los mismos datos.  Como tenemos datos numéricos y categóricos, los deberíamos unir como marco de datos (data frame), para ello utilizamos la función `data.frame`.
+La función de pegado `cbind` junta los datos y convierte los datos categóricos en numéricos generando una matriz.  Como tenemos datos numéricos y categóricos, los deberíamos unir como marco de datos (data frame), para ello utilizamos la función `data.frame`.
 
 ```{r}
 
@@ -427,7 +437,7 @@ Los argumentos de la función array son: los datos que queremos se escriban en l
 
 # Atributos
 
-Los atributos de un objeto se relacionan con las características que este objeto tiene, al inicio de esta lección comentamos que los objetos se definían en base al tipo de elementos y a las dimensiones que el objeto tiene, estos son los dos primeros atributos que un objeto tiene, el tercer atributo lo constituye el nombres de los objetos.
+Los atributos de un objeto se relacionan con las características que este objeto tiene, al inicio de esta lección comentamos que los objetos se definían en base al tipo de elementos y a las dimensiones que el objeto tiene, estos son los dos primeros atributos que un objeto tiene, el tercer atributo lo constituye el nombre de los objetos.
 
 ## Tipo de elementos
 
@@ -441,18 +451,21 @@ DaCN <- data.frame(num=1:4, car=c("a","b","d", "h"))
 
 class(Vnu); typeof(Vnu); mode(Vnu)
 ```
+
 Como vemos este objeto es un vector numérico y es un entero. La función `mode` nos da el tipo más general del vector mientras que la función `class` y `typeof` nos dan el tipo más específico.
 
 ```{r}
 class(Vnd); typeof(Vnd); mode(Vnd)
 
 ```
-Como vemos este objeto es un vector numérico, doble. La función `mode` nos da el tipo más general del vector mientras que la función `typeof` nos da el tipo más específico. En este caso la función `class` nos da también el tipo más general.
+
+Este objeto es un vector numérico doble. La función `mode` nos da el tipo más general del vector mientras que la función `typeof` nos da el tipo más específico. En este caso la función `class` nos da también el tipo más general.
 
 
 ```{r}
 class(Mnu); typeof(Mnu); mode(Mnu)
 ```
+
 En este caso la función `class`nos dice el tipo de estructura que tiene el objeto, la función `typeof`nos dice el tipo más específico y la función `mode` nos dice el tipo más general. 
 
 ```{r}
@@ -467,7 +480,7 @@ typeof(DaCN$num); typeof(DaCN$car)
 
 ## Dimensiones
 
-Tenemos algunas funciones que nos permiten conocer las dimensiones de los objetos. Para los vectores usamos la función `length`, mientras que para los objetos con dos o más dimensiones podemos usar la función `dim`, esta función nos brinda información del número de filas y de columnas. Para conocer el número de filas o el número de columnas podemos usar las funciones `nrow` y `ncol`, respectivamente. 
+Tenemos algunas funciones que nos permiten conocer las dimensiones de los objetos. Para los vectores usamos la función `length`, mientras que para los objetos con dos o más dimensiones podemos usar la función `dim`, esta función nos brinda información del número de filas y de columnas. Para conocer el número de filas o el número de columnas independientemente podemos usar las funciones `nrow` y `ncol`, respectivamente. 
 
 ```{r}
 length(Vnu); dim(DaCN); nrow(DaCN); ncol(DaCN)
@@ -489,22 +502,25 @@ names(Vnd)
 Vnd
 ```
 
-La función `names` me devuelve los nombres de los elementos, cuando imprimimos nuestro vector se muestran los datos y los nombres.
+La función `names` devuelve los nombres de los elementos, cuando imprimimos nuestro vector se muestran los datos y los nombres.
 
 ```{r}
 names(DaCN)
 ```
-Si utilizo la función `names` con un data.frame me devuelve los nombres de las columnas. Al igual que en el caso de los vectores puedo usar esta misma función para cambiar los nombres.
+
+Si utilizó la función `names` con un data.frame, R devuelve los nombres de las columnas. Al igual que en los vectores, puedo usar esta misma función para cambiar los nombres.
 
 ```{r}
 dimnames(DaCN)
 ```
+
 La función `dimnames` me devuelve una lista con los nombres de las filas y de las columnas. Al igual que en el caso anterior puedo usar la misma función para cambiar los nombres, pero en este caso debo dar una lista con un vector de los nombres de las filas y otro con el de las columnas.
 
 ```{r}
 dimnames(DaCN) <- list(c("a", "b","c", "d"), names(DaCN))
 dimnames(DaCN)
 ```
+
 En este caso hemos cambiado los nombres de las filas y hemos mantenido el nombre de las columnas. Es importante que en la lista que asignamos a los dimnames tengamos dos elementos; los nombres de filas y columnas.
 
 La función dimnames puede ser usada en las matrices de igual forma que lo hacemos con los data.frames, sin embargo, la función `names` no funciona con las matrices.
@@ -546,5 +562,7 @@ Responda:
 8. Genere una data frame con los vectores numéricos y caracteres.
 
 9. Convierta el data frame en una matriz  y verifique que tipo de elementos constituyen esta matriz. De que tipo son los datos de esta matriz.
+
+10. Cambie los nombres de las columnas de la matriz, y los nombres de filas y columnas del data frame.
 
 
